@@ -1,50 +1,30 @@
-
-import NextAuth, { NextAuthOptions } from "next-auth/next";
-// import GithubProvider from "next-auth/providers/github";
-// import GoogleProvider from "next-auth/providers/google";
-// import KakaoProvider from 'next-auth/providers/kakao';
-// import NaverProvider from 'next-auth/providers/naver';
-// import LineProvider from 'next-auth/providers/line';
-// import AppleProvider from 'next-auth/providers/apple';
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import NextAuth from "next-auth";
+import GithubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { NextAuthOptions }  from "next-auth/providers/credentials";
-import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
-export const authOptions: NextAuthOptions = {
+import prisma from "../../../../../libs/prismadb";
+
+export const authHandler = NextAuth({
+	adapter: PrismaAdapter(prisma),
 	providers: [
+		GithubProvider({
+			clientId: process.env.GITHUB_ID,
+			clientSecret: process.env.GITHUB_SECRET,
+		}),
+		GoogleProvider({
+			clientId: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		}),
 		CredentialsProvider({
-			name: "Credentials",
+			name: "credentials",
 			credentials: {
-				email: { label: "아이디", type: "text", placeholder: "아이디를 입력하세요." },
-				password: { label: "비밀번호", type: "password", placeholder: "비밀번호를 입력하세요." },
-				type: { label: "유저타입", type: "text", placeholder: "1: 교사, 2: 학생" }
+				email: { label: "email", type: "text" },
+				password: { label: "password", type: "password" },
 			},
-			async authorize(credentials: any,req) {
-				const url = process.env.NEXT_PUBLIC_AUTH_URL+ "/auth/token";
-				const res = await fetch(url, {
-					method: "POST",
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded',
-					},
-					body : new URLSearchParams({
-						"grant_type" : "password",
-						"scope" : "read write",
-						"client_id" : "uflower",
-						"username" : credentials.email,
-						"password" : credentials.password,
-						"type" : credentials.type
-					})
-				});
-
-				if(res.status === 200){
-					const data = await res.json();
-					return { account: credentials.username, access_token: data.access_token, refresh_token: data.refresh_token, expires_in: data.expires_in }  
-				} 
-				else {
-					return null;
-				}
-
-				/*
+			async authorize(credentials) {
 				if (!credentials?.email || !credentials?.password) {
 					throw new Error("Invalid credentials");
 				}
@@ -67,79 +47,25 @@ export const authOptions: NextAuthOptions = {
 				if (!isCorrectPassword) {
 					throw new Error("Invalid credentials");
 				}
-				*/
-			}
-		})
+
+				return user;
+			},
+		}),
 	],
-	secret: process.env.NEXTAUTH_SECRET,
-	session: { jwt: true },
-	callbacks: {
-		async signIn(user, account, profile, email, credential) {
-			// return Promise.resolve("/");
-			const isAllowedToSignIn = true;
-			if (isAllowedToSignIn) {
-			  return true
-			} else {
-			  // Return false to display a default error message
-			  return false
-			  // Or you can return a URL to redirect to:
-			  // return '/unauthorized'
-			}
-		},
-		
-		async jwt({ token, user, account, profile /* , isNewUser, trigger */ }) {
-			const provider = account?.provider;
-			if(provider == "credentials"){
-	  
-			  const decoded = jwt.decode(user?.access_token,{complete:true});
-
-				token.id = decoded?.payload?.xid;
-			  token.email = decoded?.payload?.sub;
-			  token.name = decoded?.payload?.xnm;
-			  token.sub = decoded?.payload?.sub;
-			  token.role = jwt.decode(user?.access_token,{complete:true});
-			  token.accessToken = user?.access_token;
-			  token.refreshToken = user?.refresh_token;
-
-				console.log(token.role);
-	  
-	
-			} else if(provider == "kakao"){
-	  
-			} else if(provider == "naver"){
-	  
-			} else if(provider == "google"){
-	  
-			} else if(provider == "line"){
-	  
-			} else if(provider == "apple"){
-	  
-			}
-			return token;
-		},
-
-		async session({ session, token, user }) {
-			session.accessToken = token.accessToken;
-			session.refreshToken = token.refreshToken;
-			session.user.id = token.id;
-			session.user.account = token.sub;
-			session.user.email = token.sub;
-			session.user.role = token.role;
-			return session;
-		}
-	},
+	// callbacks: {
+	// 	async signIn(user, account, profile) {
+	// 		return Promise.resolve("/");
+	// 	},
+	// }
 	pages: {
-		signIn: "/auth/signin",
-		signUp: "/auth/signup",
-		signOut: "/auth/signout",
+		signIn: "/auth",
 		error: "/auth",
 	},
-	// debug: process.env.NODE_ENV === "development",
-	// session: {
-	// 	strategy: "jwt",
-	// },
-	// secret: process.env.NEXTAUTH_SECRET,
-}
+	debug: process.env.NODE_ENV === "development",
+	session: {
+		strategy: "jwt",
+	},
+	secret: process.env.NEXTAUTH_SECRET,
+});
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export { authHandler as GET, authHandler as POST };

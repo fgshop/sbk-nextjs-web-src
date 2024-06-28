@@ -1,38 +1,42 @@
+import FunFacts from "@/components/Shared/FunFacts";
+import LatestNews from "@/components/Shared/LatestNews";
+import SubscribeForm from "@/components/Shared/SubscribeForm";
+import Testimonials from "@/components/Shared/Testimonials";
+import AboutArea from "@/components/VendorCertificationTraining/AboutArea";
+import Banner from "@/components/VendorCertificationTraining/Banner";
+import CourseAdvisor from "@/components/VendorCertificationTraining/CourseAdvisor";
+import Partner from "@/components/VendorCertificationTraining/Partner";
+import PopularCourses from "@/components/VendorCertificationTraining/PopularCourses";
+import PopularCoursesTwo from "@/components/VendorCertificationTraining/PopularCoursesTwo";
+import PremiumAccess from "@/components/VendorCertificationTraining/PremiumAccess";
+import SloganArea from "@/components/VendorCertificationTraining/SloganArea";
+import ViewAllCourses from "@/components/VendorCertificationTraining/ViewAllCourses";
 import { getHomepageCourses } from "@/actions/getCourses";
-//import { getCurrentUser } from "@/actions/getCurrentUser";
-import Banner from "@/components/LanguageSchool/Banner";
-import FeedbackSlider from "@/components/LanguageSchool/FeedbackSlider";
-import HowToApply from "@/components/LanguageSchool/HowToApply";
-import LanguageCourses from "@/components/LanguageSchool/LanguageCourses";
-import SignUpForm from "@/components/LanguageSchool/SignUpForm";
-import TopSellingCourses from "@/components/LanguageSchool/TopSellingCourses";
-import UpcomingEvents from "@/components/LanguageSchool/UpcomingEvents";
-import WhyChooseUs from "@/components/LanguageSchool/WhyChooseUs";
-import FunFactsTwo from "@/components/Shared/FunFactsTwo";
-import Partner from "@/components/Shared/Partner";
-// import SubscribeForm from "@/components/Shared/SubscribeForm";
+import { getCurrentUser } from "@/actions/getCurrentUser";
 
 export const metadata = {
 	title: "Home | uFlower Seed Academy",
 };
 
 export default async function Home() {
-	//const currentUser = await getCurrentUser();
 	const { courses } = await getHomepageCourses();
+	const currentUser = await getCurrentUser();
 
 	return (
 		<>
 			<Banner />
-			<LanguageCourses />
-			<WhyChooseUs />
-			<FeedbackSlider />
-			{/* <TopSellingCourses courses={courses} currentUser={currentUser} /> */}
-			<FunFactsTwo />
-			<HowToApply />
-			<SignUpForm />
-			<UpcomingEvents />
-			{/* <SubscribeForm /> */}
-			<Partner mainClsAtts="partner-area text-gray-900 ptb-50" />
+			<Partner />
+			<SloganArea />
+			<PopularCourses courses={courses} currentUser={currentUser} />
+			<AboutArea />
+			<FunFacts />
+			<PopularCoursesTwo courses={courses} currentUser={currentUser} />
+			<CourseAdvisor />
+			<PremiumAccess />
+			<Testimonials />
+			<ViewAllCourses />
+			<LatestNews />
+			<SubscribeForm />
 		</>
 	);
 }

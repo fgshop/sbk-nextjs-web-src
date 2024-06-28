@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { signIn } from "next-auth/react";
-import { set, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -11,22 +11,6 @@ import Input from "../FormHelpers/Input";
 const LoginForm = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const router = useRouter();
-
-	// const [type, setType] = useState(1);
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-
-	const onChangeType = (e) => {
-		//setType(e.target.value);
-
-		if(e.target.value === "1") {
-		  setEmail("teacher1@uflower.com");
-		  setPassword("12345678");
-		} else if(e.target.value === "2") {
-		  setEmail("student1@uflower.com");
-		  setPassword("12345678");
-		}
-	};
 	  
 	const {
 		register,
@@ -35,8 +19,8 @@ const LoginForm = () => {
 		formState: { errors },
 	} = useForm({
 		defaultValues: {
-			email: "teacher1@uflower.com",
-			password: "12345678",
+			email: "",
+			password: "",
 		},
 	});
 
@@ -45,8 +29,6 @@ const LoginForm = () => {
 		signIn("credentials", {
 			...data,
 			redirect: false,
-			email,
-			password
 		}).then((callback) => {
 			setIsLoading(false);
 
@@ -62,10 +44,6 @@ const LoginForm = () => {
 		});
 	};
 
-	useEffect(() => {
-		setEmail("teacher1@uflower.com");
-	},[]);
-
 	return (
 		<div className="login-form">
 			<h5 >로그인 / 회원가입</h5>
@@ -76,13 +54,13 @@ const LoginForm = () => {
 				--------------------------------------------------------------------------------------------------------------------------------
 				이메일/비밀번호 방식의 로그인은 회원타입이 없어도 동작하도록 서버 수정해서 type은 없어도 됨 (SNS 최초 로그일할때 회원 type이 있어야 하는데 그건 나중에 생각해야 할듯)
 				--------------------------------------------------------------------------------------------------------------------------------
-				*/}
 				<div className='d-flex align-items-center mt-3'>
-					<input type="radio" name="type" id="teacher" value={"1"} className="me-1" defaultChecked={true} onChange={onChangeType} />
+					<input type="radio" name="type" id="teacher" value={"1"} className="me-1" defaultChecked={true} />
 					<label htmlFor="teacher">교사 로그인</label>
-					<input type="radio" name="type" id="student" value={"2"} className="ms-2 me-1" onChange={onChangeType} />
+					<input type="radio" name="type" id="student" value={"2"} className="ms-2 me-1" />
 					<label htmlFor="student">학생 로그인</label>
 				</div>
+				*/}
 
 				<div className="row align-items-center mt-3">
 					<Input
@@ -90,7 +68,6 @@ const LoginForm = () => {
 						id="email"
 						type="email"
 						name="email"
-						value={email}
 						disabled={isLoading}
 						register={register}
 						errors={errors}
@@ -102,7 +79,6 @@ const LoginForm = () => {
 						id="password"
 						type="password"
 						name="password"
-						value={password}
 						disabled={isLoading}
 						register={register}
 						errors={errors}
