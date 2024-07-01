@@ -15,7 +15,7 @@ import { getHomepageCourses } from "@/actions/getCourses";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 
 export const metadata = {
-	title: "Home | uFlower Seed Academy",
+	title: "Home | Smartbeauty Koreay",
 };
 
 export default async function Home() {

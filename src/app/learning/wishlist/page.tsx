@@ -5,7 +5,7 @@ import CourseCard from "@/components/Shared/CourseCard";
 import PageBanner from "@/components/Shared/PageBanner";
 
 export const metadata = {
-	title: "My Learning | uFlower Seed Academy",
+	title: "My Learning | Smartbeauty Koreay",
 };
 
 const Page = async () => {

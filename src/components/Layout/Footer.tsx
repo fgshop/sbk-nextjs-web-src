@@ -23,7 +23,7 @@ const Footer = () => {
 									src="/images/logo.png"
 									width={180}
 									height={57}
-									alt="다꽃씨앗학교"
+									alt="Smartbeauty Korea"
 								/>
 							</Link>
 						</div>
@@ -32,7 +32,7 @@ const Footer = () => {
 							<ul>
 								<li>
 									<i className="bx bx-copyright"></i>
-									{currentYear} uFlower Seed Academy All rights reserved.
+									{currentYear} Smartbeauty Koreay All rights reserved.
 								</li>
 								<li>
 									<Link href="/privacy-policy">

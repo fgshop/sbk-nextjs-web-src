@@ -23,6 +23,8 @@ const ProfilePhotoForm = ({ currentUser }) => {
 		},
 	});
 
+	console.log(currentUser);
+
 	useEffect(() => {
 		setValue("image", currentUser.image ? currentUser.image : "");
 	}, [currentUser]);
@@ -37,7 +39,7 @@ const ProfilePhotoForm = ({ currentUser }) => {
 			return;
 		}
 		axios
-			.post(`/api/user/${currentUser.id}/profile-photo`, data)
+			.post(`/api/user/${currentUser.email}/profile-photo`, data)
 			.then((response) => {
 				toast.success(response.data.message);
 				router.refresh();

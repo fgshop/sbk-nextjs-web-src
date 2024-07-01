@@ -55,7 +55,7 @@ const Navbar = ({ currentUser }) => {
 									src="/images/logo.png"
 									width={180}
 									height={57}
-									alt="다꽃씨앗학교"
+									alt="Smartbeauty Korea"
 								/>
 							</Link>
 
@@ -149,7 +149,7 @@ const Navbar = ({ currentUser }) => {
 										src="/images/logo.png"
 										width={180}
 										height={57}
-										alt="다꽃씨앗학교"
+										alt="Smartbeauty Korea"
 									/>
 								</Link>
 							</div>

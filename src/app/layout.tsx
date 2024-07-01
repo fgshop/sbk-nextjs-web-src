@@ -28,13 +28,13 @@ import { getCurrentUser } from "@/actions/getCurrentUser";
 const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata = {
-	metadataBase: new URL("https://www.uflower.com"),
+	metadataBase: new URL("https://www.smartbeautykorea.com"),
 	alternates: {
 		canonical: "/",
 	},
 	title: {
-		template: "%s | 다꽃씨앗학교",
-		default: "uFlower Seed Academy",
+		template: "%s | Smartbeauty Korea",
+		default: "Smartbeauty Koreay",
 	},
 	keywords: [
 		"Online coding courses",
@@ -60,8 +60,8 @@ export const metadata = {
 		},
 	},
 	openGraph: {
-		title: "uFlower Seed Academy",
-		url: "https://www.uflower.com",
+		title: "Smartbeauty Koreay",
+		url: "https://www.smartbeautykorea.com",
 		images: [
 			"https://res.cloudinary.com/dev-empty/image/upload/v1707717581/znronmo1rj2gexfrmnmy.jpg",
 		],

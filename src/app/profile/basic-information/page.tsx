@@ -5,7 +5,7 @@ import InfoForm from "./InfoForm";
 import PageBanner from "@/components/Shared/PageBanner";
 
 export const metadata = {
-	title: "My Profile | uFlower Seed Academy",
+	title: "My Profile | Smartbeauty Koreay",
 };
 
 

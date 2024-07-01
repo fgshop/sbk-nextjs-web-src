@@ -14,7 +14,7 @@ import FunFactsFour from "@/components/Shared/FunFactsFour";
 import LatestNews from "@/components/Shared/LatestNews";
 
 export const metadata = {
-	title: "Home | uFlower Seed Academy",
+	title: "Home | Smartbeauty Koreay",
 };
 
 export default async function Home() {

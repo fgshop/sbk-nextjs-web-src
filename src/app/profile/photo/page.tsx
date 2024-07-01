@@ -7,7 +7,7 @@ import PageBanner from "@/components/Shared/PageBanner";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-	title: "My Profile | uFlower Seed Academy",
+	title: "My Profile | Smartbeauty Koreay",
 };
 
 

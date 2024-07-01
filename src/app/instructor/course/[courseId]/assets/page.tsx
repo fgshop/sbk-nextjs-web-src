@@ -7,7 +7,7 @@ import DownloadButton from "./DownloadButton";
 import PageBanner from "@/components/Shared/PageBanner";
 
 export const metadata = {
-	title: "My Class | uFlower Seed Academy",
+	title: "My Class | Smartbeauty Koreay",
 };
 
 const Page = async ({ params }) => {
