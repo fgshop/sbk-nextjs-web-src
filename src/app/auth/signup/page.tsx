@@ -11,10 +11,10 @@ const page = async () => {
 	return (
 		<>
 			<PageBanner
-				pageTitle="회원가입"
+				pageTitle="Signup"
 				homePageUrl="/"
 				homePageText="Home"
-				activePageText="회원가입"
+				activePageText="Signup"
 			/>
 
 			<div className="profile-authentication-area ptb-50">

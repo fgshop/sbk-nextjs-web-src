@@ -79,7 +79,7 @@ const Navbar = ({ currentUser }) => {
 								id="navbarSupportedContent"
 							>
 								{/* <SearchForm /> */}
-								{ currentUser?.role === 'ROLE_TEACHER' ? (
+								{ currentUser?.role === 'ROLE_AGENCY' ? (
 									<>
 										<ul className="navbar-nav">
 											{instructor_menus.map((menuItem) => (
@@ -90,7 +90,7 @@ const Navbar = ({ currentUser }) => {
 											))}
 										</ul>
 									</>
-								) : ( currentUser?.role === 'ROLE_STUDENT' ? (
+								) : ( currentUser?.role === 'ROLE_USER' ? (
 									<>
 										<ul className="navbar-nav">
 											{student_menus.map((menuItem) => (
@@ -167,7 +167,7 @@ const Navbar = ({ currentUser }) => {
 
 						<div className="modal-body">
 							{/*  <SearchForm /> */}
-							{ currentUser?.role === 'INSTRUCTOR' ? (
+							{ currentUser?.role === 'AGENCY' ? (
 								<>
 									<ul className="navbar-nav">
 										{instructor_menus.map((menuItem) => (

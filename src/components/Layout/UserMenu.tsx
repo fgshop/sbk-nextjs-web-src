@@ -21,7 +21,7 @@ const UserMenu = ({ currentUser }) => {
 			{!currentUser?.email && (
 				<div className="option-item">
 					<Link href="/auth/signin" className="default-btn">
-						<i className="flaticon-user"></i>로그인 / 회원가입{" "}
+						<i className="flaticon-user"></i>Signin{" "}
 						<span></span>
 					</Link>
 				</div>
@@ -91,7 +91,7 @@ const UserMenu = ({ currentUser }) => {
 									</li>
 								) : null}
 
-								{ currentUser?.role === 'INSTRUCTOR' ? (
+								{ currentUser?.role === 'AGENCY' ? (
 									<>
 										<li>
 											<Link

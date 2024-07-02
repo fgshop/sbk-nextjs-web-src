@@ -15,7 +15,7 @@ export async function getAdminStats() {
 					where: { role: "USER" },
 				}),
 				prisma.user.count({
-					where: { role: "INSTRUCTOR" },
+					where: { role: "AGENCY" },
 				}),
 				prisma.course.count({
 					where: { status: "Approved" },

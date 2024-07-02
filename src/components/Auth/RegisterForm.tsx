@@ -79,7 +79,7 @@ const RegisterForm = () => {
 
 	return (
 		<div className="register-form">
-			<h5>회원가입</h5>
+			<h5>Signup</h5>
 
 			<form onSubmit={handleSubmit(onSubmit)}>
 
@@ -170,13 +170,13 @@ const RegisterForm = () => {
 					</p> */}
 
 					<button type="submit" disabled={isLoading}>
-						{isLoading ? "Please wait..." : "회원가입"}
+						{isLoading ? "Please wait..." : "Signup"}
 					</button>
 
 					<div className="row align-items-center mt-3">
 						<div className="col-lg-6 col-md-6 col-sm-6 signin-wrap">
 							<Link href="/auth/signin" className="signin">
-								이미 회원 이신가요? 로그인
+								이미 회원 이신가요? Signin
 							</Link>
 						</div>
 					</div>

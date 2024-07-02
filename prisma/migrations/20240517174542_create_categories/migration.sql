@@ -7,7 +7,7 @@ CREATE TABLE `User` (
     `emailVerified` DATETIME(3) NULL,
     `image` VARCHAR(191) NULL,
     `hashedPassword` VARCHAR(191) NULL,
-    `role` ENUM('USER', 'INSTRUCTOR', 'ADMIN') NOT NULL DEFAULT 'USER',
+    `role` ENUM('USER', 'AGENCY', 'ADMIN') NOT NULL DEFAULT 'USER',
     `is_instructor` BOOLEAN NOT NULL DEFAULT false,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,

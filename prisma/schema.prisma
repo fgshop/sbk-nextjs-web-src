@@ -160,7 +160,7 @@ model Favourite {
 
 enum Role {
     USER
-    INSTRUCTOR
+    AGENCY
     ADMIN
 }
 

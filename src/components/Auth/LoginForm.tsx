@@ -33,7 +33,7 @@ const LoginForm = () => {
 			setIsLoading(false);
 
 			if (!callback?.error) {
-				toast.success("로그인 되었습니다.");
+				toast.success("Signin 되었습니다.");
 				router.push('/');
 				router.refresh();
 			}
@@ -46,19 +46,19 @@ const LoginForm = () => {
 
 	return (
 		<div className="login-form">
-			<h5 >로그인 / 회원가입</h5>
+			<h5 >Signin</h5>
 
 			<form onSubmit={handleSubmit(onSubmit)}>
 				
 				{/*
 				--------------------------------------------------------------------------------------------------------------------------------
-				이메일/비밀번호 방식의 로그인은 회원타입이 없어도 동작하도록 서버 수정해서 type은 없어도 됨 (SNS 최초 로그일할때 회원 type이 있어야 하는데 그건 나중에 생각해야 할듯)
+				이메일/비밀번호 방식의 Signin은 회원타입이 없어도 동작하도록 서버 수정해서 type은 없어도 됨 (SNS 최초 로그일할때 회원 type이 있어야 하는데 그건 나중에 생각해야 할듯)
 				--------------------------------------------------------------------------------------------------------------------------------
 				<div className='d-flex align-items-center mt-3'>
 					<input type="radio" name="type" id="teacher" value={"1"} className="me-1" defaultChecked={true} />
-					<label htmlFor="teacher">교사 로그인</label>
+					<label htmlFor="teacher">교사 Signin</label>
 					<input type="radio" name="type" id="student" value={"2"} className="ms-2 me-1" />
-					<label htmlFor="student">학생 로그인</label>
+					<label htmlFor="student">학생 Signin</label>
 				</div>
 				*/}
 
@@ -90,7 +90,7 @@ const LoginForm = () => {
 					<div className="col-lg-6 col-md-6 col-sm-6 remember-me-wrap">
 						<p>
 							<input type="checkbox" id="test2" />
-							<label htmlFor="test2">로그인 기억하기</label>
+							<label htmlFor="test2">Signin 기억하기</label>
 						</p>
 					</div>
 
@@ -102,13 +102,13 @@ const LoginForm = () => {
 				</div>
 
 				<button type="submit" disabled={isLoading}>
-					{isLoading ? "Please wait..." : "로그인"}
+					{isLoading ? "Please wait..." : "Signin"}
 				</button>
 
 				<div className="row align-items-center mt-3">
 					<div className="col-lg-6 col-md-6 col-sm-6 signup-wrap">
 						<Link href="/auth/signup" className="signup">
-							처음 방문하셨나요? 회원가입
+							처음 방문하셨나요? Signup
 						</Link>
 					</div>
 				</div>

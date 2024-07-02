@@ -19,7 +19,7 @@ const Banner = () => {
 							</p>
 
 							<Link href="/auth/signup" className="default-btn">
-								<i className="flaticon-user"></i> 회원가입{" "}
+								<i className="flaticon-user"></i> Signup{" "}
 								<span></span>
 							</Link>
 						</div>
